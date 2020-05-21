@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
 });
 
 function getCityWeather(senderId, cityName) {
-    let restUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=aef5a3855671c034ff11ced5d0b388d5`;
+    let restUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=aef5a3855671c034ff11ced5d0b388d5`;
     request.get(restUrl, (err, response, body) => {
       if (!err && response.statusCode == 200) {
         let json = JSON.parse(body);

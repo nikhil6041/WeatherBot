@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended : true}));
 app.use(bodyParser.json());
 var city = 'Jamshedpur';
-var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=271d1234d3f497eed5b1d80a07b3fcd1`;
+var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${FB_APP_ID}`;
 
 app.get('/', (req,res) => {
     request(url, (error,response,body) => {
@@ -77,7 +77,7 @@ app.post('/webhook/', function (req, res) {
 });
 
 function getCityWeather(senderId, cityName) {
-    let restUrl = WEATHER_BASE_URL + OPEN_WEATHER_TOKEN + '&q=' + cityName;
+    let restUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=aef5a3855671c034ff11ced5d0b388d5`;
     request.get(restUrl, (err, response, body) => {
       if (!err && response.statusCode == 200) {
         let json = JSON.parse(body);
@@ -95,7 +95,7 @@ function getCityWeather(senderId, cityName) {
   
 function sendMessageToUser(senderId, message) {
     request({
-      url: FACEBOOK_SEND_MESSAGE_URL,
+      url: `https://graph.facebook.com/v2.6/me/subscribed_apps?subscribed_fields=publisher_subscriptions&access_token=${FB_PAGE_ACCESS_TOKEN}`,
       method: 'POST',
       json: {
         recipient: {

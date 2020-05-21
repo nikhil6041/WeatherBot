@@ -96,7 +96,7 @@ function getCityWeather(senderId, cityName) {
   
 function sendMessageToUser(senderId, message) {
     request({
-      url: `https://graph.facebook.com/v2.6/me/messages`,
+      url: `https://graph.facebook.com/v2.6/me/messages?access_token=` + process.env.FB_PAGE_ACCESS_TOKEN,
     //   qs:{access_token, token},
       method: 'POST',
       json: {

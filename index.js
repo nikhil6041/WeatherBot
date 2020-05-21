@@ -112,9 +112,8 @@ function sendMessageToUser(senderId, message) {
         console.log('Error sending message to user: ');
         error.forEach(err =>{
             console.log(err);
-        })
+        });
     
-        }
       } else if (response.body.error) {
         console.log('Error sending message to user: ' + response.body.error);
       }

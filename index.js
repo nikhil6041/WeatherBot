@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended : true}));
 app.use(bodyParser.json());
 var city = 'Jamshedpur';
-var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${FB_APP_ID}`;
+var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${process.env.FB_APP_ID}`;
 
 app.get('/', (req,res) => {
     request(url, (error,response,body) => {
@@ -95,7 +95,7 @@ function getCityWeather(senderId, cityName) {
   
 function sendMessageToUser(senderId, message) {
     request({
-      url: `https://graph.facebook.com/v2.6/me/subscribed_apps?subscribed_fields=publisher_subscriptions&access_token=${FB_PAGE_ACCESS_TOKEN}`,
+      url: `https://graph.facebook.com/v2.6/me/subscribed_apps?subscribed_fields=publisher_subscriptions&access_token=${process.env.FB_PAGE_ACCESS_TOKEN}`,
       method: 'POST',
       json: {
         recipient: {

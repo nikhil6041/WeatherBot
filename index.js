@@ -1,5 +1,5 @@
 var express = require('express');
-var request = require('request-promise');
+var request = require('request');
 // var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
@@ -114,4 +114,4 @@ function sendMessageToUser(senderId, message) {
     });
 }
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
